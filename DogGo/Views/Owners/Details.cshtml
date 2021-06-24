@@ -1,0 +1,80 @@
+﻿@model DogGo.Models.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4 class="ownerHeading">Owner</h4>
+    <hr />
+    <div class="owner">
+        <label>Name: @Html.DisplayFor(model => model.Owner.Name)</label>
+        <label>Email: @Html.DisplayFor(model => model.Owner.Email)</label>
+        
+        <label>Neighborhood: @Html.DisplayFor(model => model.Owner.Neighborhood.Name)</label>
+    </div>
+    <div class="owner">
+        <label>Address: @Html.DisplayFor(model => model.Owner.Address)</label>
+        <label>Phone: @Html.DisplayFor(model => model.Owner.Phone)</label>
+
+    </div>
+    <div>
+        
+    </div>
+</div>
+<div>
+    <h4>dogs</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Breed
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Dogs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Breed)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h2>Walkers</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Walkers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
